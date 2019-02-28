@@ -830,14 +830,14 @@ type RosterItem struct {
 type Message struct {
 	XMLName xml.Name `xml:"jabber:client message"`
 	From    string   `xml:"from,attr,omitempty"`
-	ID      string   `xml:"id,attr"`
+	ID      string   `xml:"id,attr,omitempty"`
 	To      string   `xml:"to,attr"`
 	Type    string   `xml:"type,attr"` // chat, error, groupchat, headline, or normal
 	Error   *Error   `xml:"error,omitempty"`
 
 	// These should technically be []clientText, but string is much more convenient.
 	Subject string `xml:"subject,omitempty"`
-	Body    string `xml:"body"`
+	Body    string `xml:"body,omitempty"`
 	Thread  string `xml:"thread,omitempty"`
 
 	// Any hasn't matched element
