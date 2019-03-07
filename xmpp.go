@@ -903,7 +903,7 @@ type Presence struct {
 	Show     string `xml:"show,omitempty"`   // away, chat, dnd, xa
 	Status   string `xml:"status,omitempty"` // sb []clientText
 	Priority string `xml:"priority,attr,omitempty"`
-	Error    *Error `xml:"error,omitempty"`
+	Error    *Error `xml:",omitempty"`
 }
 
 // Info Query
@@ -938,11 +938,11 @@ func (q *Query) Parse() (stanza interface{}, err error) {
 
 // Rename to StanzaError ???
 type Error struct {
-	XMLName xml.Name `xml:"jabber:client error"`
-	Code    string   `xml:",attr"`
-	Type    string   `xml:",attr"`
-	Any     xml.Name
-	Text    string
+	XMLName xml.Name //`xml:"error"` //`xml:"jabber:client error"`
+	Code    string   `xml:",attr,omitempty"`
+	Type    string   `xml:",attr,omitempty"`
+	// Any     xml.Name `xml:",omitempty"`
+	Text string `xml:"text,omitempty"`
 }
 
 // type clientQuery struct {
